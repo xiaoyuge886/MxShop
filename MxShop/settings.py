@@ -57,6 +57,8 @@ INSTALLED_APPS = [
     'coreschema',
     'rest_framework.authtoken',
     'social_django',
+    'content',
+    "rest_framework_swagger",
 ]
 
 
@@ -122,9 +124,9 @@ AUTHENTICATION_BACKENDS = (
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mxshop',        #数据库名字
+        'NAME': 'weixin_back',        #数据库名字
         'USER': 'root',          #账号
-        'PASSWORD': '123456',    #密码
+        'PASSWORD': 'asd',    #密码
         # 'HOST': '47.93.198.159',     #IP
         'HOST': '127.0.0.1',     #IP
         'PORT': '3306',          #端口
@@ -134,6 +136,7 @@ DATABASES = {
         "OPTIONS":{"init_command":"SET default_storage_engine=INNODB;"}
     }
 }
+
 
 
 # Password validation

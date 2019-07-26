@@ -8,7 +8,6 @@ from MxShop.settings import MEDIA_ROOT
 # from goods.view_base import GoodsListView
 
 from rest_framework.documentation import include_docs_urls
-from goods.views import GoodsListViewSet,CategoryViewSet,BannerViewset,IndexCategoryViewset,HotSearchsViewset
 from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken import views
 from rest_framework_jwt.views import obtain_jwt_token
@@ -16,6 +15,21 @@ from users.views import SmsCodeViewset,UserViewset
 from user_operation.views import UserFavViewset,LeavingMessageViewset,AddressViewset
 from trade.views import ShoppingCartViewset,OrderViewset,AlipayView
 from django.views.generic import TemplateView
+
+####### swagger
+# 导入辅助函数get_schema_view
+from rest_framework.schemas import get_schema_view
+# 导入两个类
+from rest_framework_swagger.renderers import SwaggerUIRenderer,OpenAPIRenderer
+
+from goods.views import GoodsListViewSet,CategoryViewSet,BannerViewset,IndexCategoryViewset,HotSearchsViewset
+from content.views import ContentListViewSet
+
+# 利用辅助函数引入所导入的两个类
+schema_view = get_schema_view(title='API',renderer_classes=[SwaggerUIRenderer,OpenAPIRenderer])
+
+
+
 
 router = DefaultRouter()
 
@@ -44,6 +58,8 @@ router.register(r'hotsearchs', HotSearchsViewset, base_name="hotsearchs")
 # 首页系列商品展示url
 router.register(r'indexgoods', IndexCategoryViewset, base_name="indexgoods")
 
+router.register(r'content', ContentListViewSet, base_name='content')
+
 
 urlpatterns = [
     path('xadmin/', xadmin.site.urls),
@@ -64,5 +80,6 @@ urlpatterns = [
     # 配置支付宝支付相关接口的url
     path('alipay/return/', AlipayView.as_view()),
     # 第三方登录
-    path('', include('social_django.urls', namespace='social'))
+    path('', include('social_django.urls', namespace='social')),
+    path('swagger/',schema_view,name='swagger')   # 配置docs的url路径
 ]

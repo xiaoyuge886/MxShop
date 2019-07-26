@@ -1,5 +1,5 @@
 # users/models.py
-__author__ = 'derek'
+
 
 
 from datetime import datetime
