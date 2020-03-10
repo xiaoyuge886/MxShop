@@ -8,7 +8,7 @@ from rest_framework import serializers
 from goods.models import Goods
 from goods.serializers import GoodsSerializer
 from .models import OrderInfo,OrderGoods
-from MxShop.settings import ali_pub_key_path, private_key_path
+from myshop.settings import ali_pub_key_path, private_key_path
 from utils.alipay import AliPay
 
 class ShopCartDetailSerializer(serializers.ModelSerializer):

@@ -1,7 +1,5 @@
 #goods/models.py
-__author__ = 'derek'
-
-
+import uuid
 from datetime import datetime
 from django.db import models
 from DjangoUeditor.models import UEditorField
@@ -60,7 +58,8 @@ class Goods(models.Model):
     商品
     """
     category = models.ForeignKey(GoodsCategory, on_delete=models.CASCADE, verbose_name="商品类目")
-    goods_sn = models.CharField("商品唯一货号",max_length=50, default="")
+    goods_sn = models.CharField("商品唯一货号", max_length=50, auto_created=True,
+                                default=uuid.uuid1,)
     name = models.CharField("商品名",max_length=100,)
     click_num = models.IntegerField("点击数",default=0)
     sold_num = models.IntegerField("商品销售量",default=0)
@@ -83,6 +82,10 @@ class Goods(models.Model):
     class Meta:
         verbose_name = '商品信息'
         verbose_name_plural = verbose_name
+
+    # def save(self, *args, **kwargs):
+    #     self.goods_sn = hash(uuid.uuid1())
+    #     super(Goods, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name

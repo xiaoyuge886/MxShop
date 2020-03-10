@@ -1,4 +1,4 @@
-# MxShop
+# myshop
 Django REST framework + vue 打造生鲜超市<br />
 
 ## 环境

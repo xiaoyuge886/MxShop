@@ -3,7 +3,7 @@ __author__ = 'derek'
 
 import re
 from datetime import datetime, timedelta
-from MxShop.settings import REGEX_MOBILE
+from myshop.settings import REGEX_MOBILE
 from users.models import VerifyCode
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator

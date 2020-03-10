@@ -10,7 +10,7 @@ from .serializers import SmsSerializer,UserRegSerializer,UserDetailSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from utils.yunpian import YunPian
-from MxShop.settings import APIKEY
+from myshop.settings import APIKEY
 from random import choice
 from .models import VerifyCode
 from rest_framework_jwt.serializers import jwt_encode_handler,jwt_payload_handler

@@ -1,10 +1,10 @@
-# MxShop/urls.py
+# myshop/urls.py
 __author__ = 'derek'
 
 from django.urls import path,include,re_path
 import xadmin
 from django.views.static import serve
-from MxShop.settings import MEDIA_ROOT
+from myshop.settings import MEDIA_ROOT
 # from goods.view_base import GoodsListView
 
 from rest_framework.documentation import include_docs_urls
@@ -23,7 +23,6 @@ from rest_framework.schemas import get_schema_view
 from rest_framework_swagger.renderers import SwaggerUIRenderer,OpenAPIRenderer
 
 from goods.views import GoodsListViewSet,CategoryViewSet,BannerViewset,IndexCategoryViewset,HotSearchsViewset
-from content.views import ContentListViewSet
 
 # 利用辅助函数引入所导入的两个类
 schema_view = get_schema_view(title='API',renderer_classes=[SwaggerUIRenderer,OpenAPIRenderer])
@@ -58,7 +57,6 @@ router.register(r'hotsearchs', HotSearchsViewset, base_name="hotsearchs")
 # 首页系列商品展示url
 router.register(r'indexgoods', IndexCategoryViewset, base_name="indexgoods")
 
-router.register(r'content', ContentListViewSet, base_name='content')
 
 
 urlpatterns = [

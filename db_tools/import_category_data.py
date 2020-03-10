@@ -9,7 +9,7 @@ pwd = os.path.dirname(os.path.realpath(__file__))
 # 将项目目录加入setting
 sys.path.append(pwd + "../")
 # manage.py中
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "MxShop.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "myshop.settings")
 
 import django
 django.setup()
